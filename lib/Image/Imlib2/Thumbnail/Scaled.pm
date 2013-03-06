@@ -16,11 +16,11 @@ Image::Imlib2::Thumbnail::Scaled - Create scaled thumbnails while keeping the as
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -194,6 +194,8 @@ sub generate {
 
     my ( $o_width, $o_height )
         = ( $image->width, $image->height );
+		$self->{original_width} = $o_width;
+		$self->{original_height} = $o_height;
     my $original_extension = [ fileparse( $filename, qr/\.[^.]*?$/ ) ]->[2]
         || '.jpg';
     $original_extension =~ s/^\.//;
@@ -252,7 +254,25 @@ sub generate {
     return \@thumbnails;
 }
 
+=head2 original_width
 
+  my $original_width = $thumbnail->original_width;
+
+This subroutine returns the width of the original image. (Can only be called after L<generate|/"generate">).
+
+=cut
+
+sub original_width { shift->{original_width} }
+
+=head2 original_height
+
+  my $original_height = $thumbnail->original_height;
+
+This subroutine returns the height of the original image. (Can only be called after L<generate|/"generate">).
+
+=cut
+
+sub original_height { shift->{original_height} }
 
 =head1 AUTHOR
 
