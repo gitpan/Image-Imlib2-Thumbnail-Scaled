@@ -3,9 +3,11 @@ abstract: 'Create scaled thumbnails while keeping the aspect ratio'
 author:
   - 'Adam Hopkins <srchulo@cpan.org>'
 build_requires:
-  Class::Accessor::Fast: '0'
+  File::Basename: '0'
+  File::Copy: '0'
   Image::Imlib2: '2.00'
   MIME::Types: '0'
+  Object::Tiny::RW::XS: '0'
   Path::Class: '0'
   Test::More: '0'
 configure_requires:
@@ -23,4 +25,4 @@ no_index:
     - inc
 requires:
   perl: '5.006'
-version: '0.04'
+version: '0.05'
